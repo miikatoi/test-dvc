@@ -56,8 +56,18 @@ t = Trainer()
 
 @ray.remote
 def run_training():
-    repo = Repo(".")
-    repo.pull()
+    import os
+
+    # Print current working directory
+    print("Current Working Directory:")
+    print(os.getcwd())
+
+    # List files and directories
+    print("\nFiles and Directories:")
+    for item in os.listdir():
+        print(item)
+    # repo = Repo(".")
+    # repo.pull()
     t.train()
     t.save_result()
 
